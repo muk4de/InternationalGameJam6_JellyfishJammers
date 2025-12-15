@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     // inspector
     [Header("Player Movement")]
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float accelerationTime = 0.5f; // 最高速度に達するまでの時間（秒）
-    [SerializeField] float decelerationTime = 0.5f; // 停止するまでの時間（秒）
+    [SerializeField] float accelerationTime = 0.5f;
+    [SerializeField] float decelerationTime = 0.5f;
 
     [Header("Input system")]
     [SerializeField] InputAction moveAction;

@@ -4,35 +4,63 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour
 {
     [Header("Settings")]
-    public GameObject cam;
+    [Range(0f, 1f)]
+    public float parallaxEffect;
 
-    [RangeAttribute(0f, 1f)]public float parallaxEffect;
+    public bool loopX = false;
+    public bool loopY = false;
 
     public const float farMax = 50;
 
-    private float length;
-    private float startpos;
+    private Vector2 size;
+    private Vector3 startpos;
 
-    void Start()
+    void Awake()
     {
-        startpos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
+        startpos = transform.position;
+        size = GetComponent<SpriteRenderer>().bounds.size;
+    }
+    void OnEnable()
+    {
+        CinemachineCore.CameraUpdatedEvent.AddListener(OnCameraUpdated);
+    }
+    void OnDisable()
+    {
+        CinemachineCore.CameraUpdatedEvent.RemoveListener(OnCameraUpdated);
     }
 
-    void Update()
-    { 
-        float dist = (cam.transform.position.x * parallaxEffect);
-        float temp = (cam.transform.position.x * (1 - parallaxEffect));
+    void OnCameraUpdated(CinemachineBrain brain)
+    {
+        var cam = Camera.main;
 
-        transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
+        Vector3 dist = cam.transform.position * parallaxEffect;
 
-        if (temp > startpos + length)
+        Vector3 temp = cam.transform.position * (1 - parallaxEffect);
+
+        transform.position = new Vector3(startpos.x + dist.x, startpos.y + dist.y, transform.position.z);
+
+        if (loopX)
         {
-            startpos += length;
+            if (temp.x > startpos.x + size.x)
+            {
+                startpos.x += size.x;
+            }
+            else if (temp.x < startpos.x - size.x)
+            {
+                startpos.x -= size.x;
+            }
         }
-        else if (temp < startpos - length)
+
+        if (loopY)
         {
-            startpos -= length;
+            if (temp.y > startpos.y + size.y)
+            {
+                startpos.y += size.y;
+            }
+            else if (temp.y < startpos.y - size.y)
+            {
+                startpos.y -= size.y;
+            }
         }
     }
 
