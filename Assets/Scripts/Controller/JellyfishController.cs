@@ -15,10 +15,11 @@ public class JellyfishController : MonoBehaviour
     bool isPlayerInRange = false;
     float swimTimer = 0f;
     Rigidbody2D rb;
-
+    Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -34,6 +35,7 @@ public class JellyfishController : MonoBehaviour
     void Swim()
     {
         if (Player == null) return;
+
         if (isPlayerInRange)
         {
             float targetAngle = 0f;
@@ -43,6 +45,10 @@ public class JellyfishController : MonoBehaviour
         }
         else
         {
+            if (animator != null)
+            {
+                animator.SetTrigger("Swim");
+            }
             var diff = Player.position - transform.position;
             diff.z = 0f;
 
