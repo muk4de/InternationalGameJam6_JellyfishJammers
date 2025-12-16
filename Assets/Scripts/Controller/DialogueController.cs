@@ -80,12 +80,16 @@ public class DialogueController : MonoBehaviour
             seq.Append(dialogueGroup.DOFade(1f, popupDuration));
             seq.Join(dialogueGroup.transform.DOScale(dialogueGroupScale, popupDuration));
         }
-        Debug.Log("Append Show dialogue");
     }
 
     public void HideDialogue(bool isFinished)
     {
-        if (isFinished) IsTalking = false;
+        if (!IsTalking) return;
+        if (isFinished)
+        {
+            IsTalking = false;
+            CreateNewSequence();
+        }
 
         if (dialogueGroup != null)
         {
@@ -94,7 +98,6 @@ public class DialogueController : MonoBehaviour
 
             seq.AppendCallback(() => dialogueGroup.gameObject.SetActive(false));
         }
-        Debug.Log("Append Hide dialogue");
     }
 
     public void DisplayNextSentence()
@@ -115,7 +118,7 @@ public class DialogueController : MonoBehaviour
     {
         if (seq != null && seq.IsActive())
         {
-            seq.Kill();
+            seq.Kill(true);
         }
         seq = DOTween.Sequence();
     }
