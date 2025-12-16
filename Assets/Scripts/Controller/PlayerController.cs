@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input system")]
     [SerializeField] InputAction moveAction;
+
+    // public 
+    public bool CanMove = true;
 
     // private
     Rigidbody2D rb;
@@ -35,12 +38,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveInput = moveAction.ReadValue<Vector2>();
-        Flip();
+
     }
 
     void FixedUpdate()
     {
-        Swim();
+        if (CanMove)
+        {
+            Flip();
+            Swim();
+        }
     }
 
     void Swim()
