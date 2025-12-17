@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: aaecb49b39d143541929be8f15500f6f
+guid: e268e62bdd9894147849c06837350c1a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 930554898542649708
-    second: 2020-08-07_14-54-57-563_0
+      213: 2750401573205062083
+    second: Background_weeds_0
+  - first:
+      213: 6183091457805329466
+    second: Background_weeds_1
+  - first:
+      213: 1029187054804594704
+    second: Background_weeds_2
+  - first:
+      213: 5079642430651838566
+    second: Background_weeds_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +122,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2020-08-07_14-54-57-563_0
+      name: Background_weeds_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2381
-        height: 1684
+        x: 20
+        y: 22
+        width: 7
+        height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6162abffbef9ec00800000000000000
-      internalID: 930554898542649708
+      spriteID: 3c1309898a36b2620800000000000000
+      internalID: 2750401573205062083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background_weeds_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 20
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a342d34ebe0cec550800000000000000
+      internalID: 6183091457805329466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background_weeds_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 17
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 010fe096c28684e00800000000000000
+      internalID: 1029187054804594704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background_weeds_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 19
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6603109a0e38e7640800000000000000
+      internalID: 5079642430651838566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Background_weeds_4
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 26
+        width: 5
+        height: 5
+      alignment: 9
+      pivot: {x: 0.21414368, y: 0.48757234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1de792c14deb44b98767237db119f2
+      internalID: -467392195
       vertices: []
       indices: 
       edges: []
@@ -138,7 +235,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e0d96d84f0c1bc449987f6171aa51f21
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +245,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2020-08-07_14-54-57-563_0: 930554898542649708
+      Background_weeds_0: 2750401573205062083
+      Background_weeds_1: 6183091457805329466
+      Background_weeds_2: 1029187054804594704
+      Background_weeds_3: 5079642430651838566
+      Background_weeds_4: -467392195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

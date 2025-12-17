@@ -10,6 +10,7 @@ public class JellyfishController : MonoBehaviour
 
     //public 
     public Transform Player;
+    public bool IsFollow;
 
     // private 
     bool isPlayerInRange = false;
@@ -18,12 +19,14 @@ public class JellyfishController : MonoBehaviour
     Animator animator;
     void Start()
     {
+        swimTimer = Random.value * swimInterval;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        if (!IsFollow) return;
         swimTimer += Time.deltaTime;
         if (swimTimer > swimInterval)
         {
