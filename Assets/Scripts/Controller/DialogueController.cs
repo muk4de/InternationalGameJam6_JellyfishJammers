@@ -48,8 +48,8 @@ public class DialogueController : MonoBehaviour
                 HideDialogue(true);
                 return;
             }
-            HideDialogue(false);
-            ShowDialogue();
+            //HideDialogue(false);
+            //ShowDialogue();
             DisplayNextSentence();
         }
         else

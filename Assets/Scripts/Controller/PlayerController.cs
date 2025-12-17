@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour
             Flip();
             Swim();
         }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     void Swim()
