@@ -84,6 +84,7 @@ public class InteractionEvent : MonoBehaviour
 
     public void ShowVisualCue()
     {
+        if (!CanInteract) return;
         if (visualCueGroup != null)
         {
             tween.Kill(true);

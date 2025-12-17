@@ -4,7 +4,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
-
+[System.Serializable]
+public class StringListWrapper
+{
+    public string title;
+    public List<string> list = new List<string>();
+    public UnityEvent OnStartDialogue;
+    public UnityEvent OnEndDialogue;
+}
 public class DialogueController : MonoBehaviour
 {
     [Header("Settings")]
@@ -15,16 +22,18 @@ public class DialogueController : MonoBehaviour
     [SerializeField] CanvasGroup dialogueGroup;
     [SerializeField] TextMeshProUGUI dialogueTmp;
 
-    [Header("Events")]
+    [Header("General Events")]
     [SerializeField] UnityEvent OnStartDialogue;
     [SerializeField] UnityEvent OnEndDialogue;
 
-    [SerializeField] List<string> sentences = new List<string>();
+    [SerializeField] List<StringListWrapper> sentences = new();
     private Queue<string> sentenceQueue = new Queue<string>();
 
     public bool IsTalking = false;
     Vector3 dialogueGroupScale;
     Sequence seq;
+
+    public int nowSentenceIndex = 0;
 
     void Start()
     {
@@ -45,6 +54,7 @@ public class DialogueController : MonoBehaviour
             if (sentenceQueue.Count == 0)
             {
                 OnEndDialogue.Invoke();
+                sentences[nowSentenceIndex].OnEndDialogue.Invoke();
                 HideDialogue(true);
                 return;
             }
@@ -56,8 +66,9 @@ public class DialogueController : MonoBehaviour
         {
             IsTalking = true;
             OnStartDialogue.Invoke();
+            sentences[nowSentenceIndex].OnStartDialogue.Invoke();
             sentenceQueue.Clear();
-            foreach (var sentence in sentences)
+            foreach (var sentence in sentences[nowSentenceIndex].list)
             {
                 sentenceQueue.Enqueue(sentence);
             }
@@ -111,7 +122,7 @@ public class DialogueController : MonoBehaviour
 
         var charNum = text.Length;
         var dur = text.Length * charInterval;
-        seq.Append(DOTween.To(() => 0, (x) => dialogueTmp.maxVisibleCharacters = x, charNum, dur));
+        seq.Append(DOTween.To(() => 0, (x) => dialogueTmp.maxVisibleCharacters = x, charNum, dur).SetEase(Ease.Linear));
     }
 
     void CreateNewSequence()

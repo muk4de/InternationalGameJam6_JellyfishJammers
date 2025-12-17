@@ -8,7 +8,7 @@ public class JellyfishController : MonoBehaviour
     [SerializeField] float swimInterval = 1f;
     [SerializeField] float swimPower = 1f;
 
-    //public 
+    //public
     public Transform Player;
     public bool IsFollow;
 
@@ -17,6 +17,7 @@ public class JellyfishController : MonoBehaviour
     float swimTimer = 0f;
     Rigidbody2D rb;
     Animator animator;
+
     void Start()
     {
         swimTimer = Random.value * swimInterval;

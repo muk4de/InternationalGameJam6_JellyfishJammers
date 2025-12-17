@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour
 {
     [Header("Settings")]
-    [Range(0f, 1f)]
+    [Range(-0.1f, 1f)]
     public float parallaxEffect;
 
     public const float farMax = 50;

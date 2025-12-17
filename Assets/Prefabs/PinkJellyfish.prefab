@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371886081854193344}
   - component: {fileID: 5857769882812803887}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spot Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 6293906218424424487}
   - component: {fileID: 2565780409085318424}
   - component: {fileID: 6324044253657031317}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PinkJellyfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -291,10 +291,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

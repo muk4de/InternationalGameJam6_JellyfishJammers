@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6241396424591487491}
   - component: {fileID: 652280645379345580}
   - component: {fileID: 4085136860811478123}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlueJellyfish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -207,10 +207,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -240,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8202343559419637967}
   - component: {fileID: 1581051895532945933}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spot Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
