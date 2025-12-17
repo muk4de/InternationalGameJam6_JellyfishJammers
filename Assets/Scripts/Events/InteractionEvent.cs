@@ -12,13 +12,14 @@ public class InteractionEvent : MonoBehaviour
     Vector3 visualCueScale;
 
     [SerializeField] InputAction interactAction;
-    [SerializeField]private bool isPlayerInRange;
+    [SerializeField] private bool isPlayerInRange;
 
     [Header("Interact Event")]
     public UnityEvent OnEnterTrigger;
     public UnityEvent OnExitTrigger;
     public UnityEvent OnInteract;
 
+    public bool CanInteract = true;
 
     Tween tween;
 
@@ -36,6 +37,7 @@ public class InteractionEvent : MonoBehaviour
 
     void Update()
     {
+        if (!CanInteract) return;
         if (isPlayerInRange && interactAction.WasPressedThisFrame())
         {
             Debug.Log("interacted");
@@ -46,6 +48,7 @@ public class InteractionEvent : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!CanInteract) return;
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = true;
@@ -59,6 +62,7 @@ public class InteractionEvent : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (!CanInteract) return;
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = false;
@@ -98,5 +102,16 @@ public class InteractionEvent : MonoBehaviour
             tween = visualCueGroup.transform.DOScale(0f, popupDuration);
             tween.OnKill(() => visualCueGroup.gameObject.SetActive(false));
         }
+    }
+    public void EnableInteraction()
+    {
+        CanInteract = true;
+    }
+
+    public void DisableInteraction()
+    {
+        CanInteract = false;
+        isPlayerInRange = false;
+        HideVisualCue();
     }
 }

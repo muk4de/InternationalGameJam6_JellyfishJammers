@@ -11,6 +11,7 @@ public class WireTask : MonoBehaviour
     public List<Color> availableColors; // 使用する色のリスト（赤、青、黄色、ピンクなど）
     public GameObject taskPanel;        // タスク画面全体のパネル
     public Canvas parentCanvas;         // 親キャンバス
+    public Button exitButton;
 
     [Header("Panel Animation")]
     [SerializeField] float slideDuration = 1f;
@@ -25,7 +26,7 @@ public class WireTask : MonoBehaviour
 
     private List<int> currentIndices;   // 色の割り当て用インデックス
 
-
+    public bool IsCompleted = false;
     Vector3 panelStartPos;
     RectTransform panelRect;
     Sequence sequence;
@@ -37,7 +38,10 @@ public class WireTask : MonoBehaviour
         // 最初は非表示
         taskPanel.SetActive(false);
         panelRect = taskPanel.GetComponent<RectTransform>();
-        panelStartPos = panelRect.position;
+        panelStartPos = panelRect.anchoredPosition;
+        panelRect.anchoredPosition = panelStartPos - new Vector3(0, slideLength);
+
+        GenerateTask();
     }
 
     // 既存のInteractionEventスクリプトから呼ぶ関数
@@ -54,8 +58,6 @@ public class WireTask : MonoBehaviour
         GameManager.Instance.SetPlayerMovable(false);
         SequenceSetup(Ease.OutCubic);
         ShowTaskPanel(sequence);
-
-        GenerateTask();
     }
 
     public void CloseTask()
@@ -137,8 +139,9 @@ public class WireTask : MonoBehaviour
         if (allConnected)
         {
             Debug.Log("タスク完了！");
+            IsCompleted = true;
             OnTaskCompleted.Invoke();
-
+            exitButton.interactable = false;
             // 少し待ってから閉じるなどの演出を入れる場合はコルーチン推奨
             Invoke(nameof(CloseTask), 1.0f);
         }

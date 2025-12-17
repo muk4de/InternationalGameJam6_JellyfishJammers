@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewBgmEvent", menuName = "GameEvent/NewBgmEvent")]

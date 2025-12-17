@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: InitBgmEvent
   m_EditorClassIdentifier: 
   BgmSoundData: {fileID: 11400000, guid: 177070c11196bab4c887c726d8e67117, type: 2}
-  FadeDuration: 0
+  FadeDuration: 0.1

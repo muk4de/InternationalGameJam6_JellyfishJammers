@@ -16,9 +16,8 @@ public class EventSequencer : MonoBehaviour
         foreach (var gameEvent in eventList)
         {
             yield return gameEvent.Execute();
+            Debug.Log($"Event:{gameEvent.name} is end");
         }
-
-        Debug.Log("finished all event");
     }
 
     void Start()

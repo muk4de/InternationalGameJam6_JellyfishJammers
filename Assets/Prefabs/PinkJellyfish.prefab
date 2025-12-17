@@ -137,6 +137,7 @@ MonoBehaviour:
   swimInterval: 1
   swimPower: 3
   Player: {fileID: 0}
+  IsFollow: 0
 --- !u!212 &8856029504563309305
 SpriteRenderer:
   m_ObjectHideFlags: 0
