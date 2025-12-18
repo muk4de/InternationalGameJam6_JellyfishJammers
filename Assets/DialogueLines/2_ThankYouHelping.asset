@@ -18,8 +18,6 @@ MonoBehaviour:
     text: It moved... It really moved!
   - speaker: 0
     text: Thank you so much! You are so kind.
-  - speaker: 0
-    text: Thank you so much! You are so kind.
   - speaker: 1
     text: What are you?
   - speaker: 0
@@ -30,5 +28,5 @@ MonoBehaviour:
     text: And one more thing,\nwill you help me find our family?
   - speaker: 0
     text: They went to the moon pool...\nbut we got stuck and now I'm lost.
-  - speaker: 0
+  - speaker: 1
     text: Sure.

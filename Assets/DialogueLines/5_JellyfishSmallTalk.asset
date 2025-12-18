@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0574483ac09ffe4eb0edf2e7cd3833f, type: 3}
+  m_Name: 5_JellyfishSmallTalk
+  m_EditorClassIdentifier: 
+  title: JellyfishSmallTalk
+  list:
+  - speaker: 0
+    text: So why are you here in the first place?
+  - speaker: 1
+    text: "To explore the sunken city, \nwhile learning about the cyber marine animals"
+  - speaker: 0
+    text: Oh! That is exactly where my family went!
+  - speaker: 0
+    text: It is called the Moon Pool.
+  - speaker: 0
+    text: 'We go there to charge
+
+      our batteries with lunar power.'
+  - speaker: 0
+    text: You can see a lot of marine life there.
+  - speaker: 0
+    text: Let's go together!

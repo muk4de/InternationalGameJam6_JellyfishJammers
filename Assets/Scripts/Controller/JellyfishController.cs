@@ -8,12 +8,15 @@ public class JellyfishController : MonoBehaviour
     [SerializeField] float swimInterval = 1f;
     [SerializeField] float swimPower = 1f;
 
+    [SerializeField] Transform canvas;
+    [SerializeField] Vector2 offset;
+
     //public
     public Transform Player;
     public bool IsFollow;
 
     // private 
-    bool isPlayerInRange = false;
+    public bool IsPlayerInRange = false;
     float swimTimer = 0f;
     Rigidbody2D rb;
     Animator animator;
@@ -32,6 +35,8 @@ public class JellyfishController : MonoBehaviour
 
     void Update()
     {
+        if(canvas != null) canvas.position = (Vector2)transform.position + offset;
+
         if (!IsFollow) return;
         swimTimer += Time.deltaTime;
         if (swimTimer > swimInterval)
@@ -45,7 +50,7 @@ public class JellyfishController : MonoBehaviour
     {
         if (Player == null) return;
 
-        if (isPlayerInRange)
+        if (IsPlayerInRange)
         {
             float targetAngle = 0f;
             float angleDiff = Mathf.DeltaAngle(rb.rotation, targetAngle);
@@ -74,7 +79,7 @@ public class JellyfishController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInRange = true;
+            IsPlayerInRange = true;
         }
     }
 
@@ -82,7 +87,13 @@ public class JellyfishController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isPlayerInRange = false;
+            IsPlayerInRange = false;
         }
+    }
+
+    private void OnValidate()
+    {
+        if (canvas == null) return;
+        canvas.position = (Vector2)transform.position + offset;
     }
 }

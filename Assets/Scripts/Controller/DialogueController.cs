@@ -65,6 +65,11 @@ public class DialogueController : MonoBehaviour
         }
     }
 
+    public void NextSentence()
+    {
+        sentenceIndex++;
+    }
+
     private void Update()
     {
         if (!IsTalking) return;
@@ -82,6 +87,11 @@ public class DialogueController : MonoBehaviour
             group.alpha = 0f;
             group.transform.localScale = Vector3.zero;
         }
+    }
+
+    public void StartDialogueWithDelay(float delay)
+    {
+        Invoke("StartDialogue", delay);
     }
 
     public void StartDialogue()
