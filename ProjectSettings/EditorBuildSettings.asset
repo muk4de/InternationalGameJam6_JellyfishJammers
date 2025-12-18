@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/CityScene.unity
     guid: da91ba57e3aac004da70821b3ead257c
   - enabled: 1
-    path: Assets/Scenes/MoonPoolScene.unity
+    path: Assets/Scenes/AlleyWaysScene.unity
     guid: de1b7c944bfee364685883eddd7cd9dc
+  - enabled: 1
+    path: Assets/Scenes/MoonPoolScene.unity
+    guid: 5aa5ca9f357d0124692eb03577416130
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

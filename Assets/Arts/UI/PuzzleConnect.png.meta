@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: daeaaa399fda2cf43a1313660384cf84
+guid: 00e085cae5f0bf6498c1e9419fd1e46e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1740415069196104823
-    second: Idleturtle_0
-  - first:
-      213: 5654562049954336350
-    second: Idleturtle_1
-  - first:
-      213: 358960907696035802
-    second: Idleturtle_2
-  - first:
-      213: 1077013815708814144
-    second: Idleturtle_3
+      213: 1804972470451431768
+    second: PuzzleConnect_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idleturtle_0
+      name: PuzzleConnect_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2
         y: 0
-        width: 48
-        height: 48
+        width: 90
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 774bb29c842372810800000000000000
-      internalID: 1740415069196104823
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idleturtle_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e5eceeba93a097e40800000000000000
-      internalID: 5654562049954336350
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idleturtle_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad7597f2b094bf400800000000000000
-      internalID: 358960907696035802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idleturtle_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 04b038feb5252fe00800000000000000
-      internalID: 1077013815708814144
+      spriteID: 859ed9216ec8c0910800000000000000
+      internalID: 1804972470451431768
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4a8447c2817a38f44af963f6f8e04f0e
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idleturtle_0: 1740415069196104823
-      Idleturtle_1: 5654562049954336350
-      Idleturtle_2: 358960907696035802
-      Idleturtle_3: 1077013815708814144
+      PuzzleConnect_0: 1804972470451431768
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

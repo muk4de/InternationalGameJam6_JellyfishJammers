@@ -10,13 +10,17 @@ public class SceneLoader : MonoBehaviour
 
     [Header("Loading Screen")]
     [SerializeField] private CanvasGroup loadingCanvasGroup;
+    [SerializeField] private CanvasGroup fadePanelGroup;
+    [SerializeField] private Image fadePanelImage;
     [SerializeField] private Slider progressBar;
 
     public static readonly string TitleSceneName = "TitleScene";
     public static readonly string CitySceneName = "CityScene";
+    public static readonly string AlleyWaysSceneName = "AlleyWaysScene";
     public static readonly string MoonPoolSceneName = "MoonPoolScene";
 
     Tween tween;
+    Color startFadeColor;
 
     void Awake()
     {
@@ -35,6 +39,17 @@ public class SceneLoader : MonoBehaviour
         // 最初はロード画面を非表示にしておく
         loadingCanvasGroup.gameObject.SetActive(false);
         loadingCanvasGroup.blocksRaycasts = false;
+
+        fadePanelGroup.gameObject.SetActive(false);
+        startFadeColor = fadePanelImage.color;
+    }
+
+    public void FadeScene(string sceneName, float fadeInDur = 0.25f, float minLoadDur = 0.25f, float fadeOutDur = 0.25f, Color? fadeColor = null)
+    {
+        if(fadeColor == null) fadeColor = startFadeColor;
+        fadePanelImage.color = fadeColor.Value;
+        StopAllCoroutines();
+        StartCoroutine(LoadAsyncRoutine(sceneName, fadeInDur, minLoadDur, fadeOutDur, true));
     }
 
     /// <summary>
@@ -45,28 +60,33 @@ public class SceneLoader : MonoBehaviour
     {
         // 他のコルーチンが動いていれば停止（念のため）
         StopAllCoroutines();
-        StartCoroutine(LoadAsyncRoutine(sceneName, fadeInDur, minLoadDur, fadeOutDur));
+        StartCoroutine(LoadAsyncRoutine(sceneName, fadeInDur, minLoadDur, fadeOutDur, false));
     }
 
     /// <summary>
     /// 非同期でシーンを読み込むコルーチン
     /// </summary>
-    private IEnumerator LoadAsyncRoutine(string sceneName, float fadeInDur, float minLoadDur, float fadeOutDur)
+    private IEnumerator LoadAsyncRoutine(string sceneName, float fadeInDur, float minLoadDur, float fadeOutDur, bool panel)
     {
-        // 1. ロード画面を表示する
-        if (loadingCanvasGroup != null)
+        if (panel)
         {
-            loadingCanvasGroup.gameObject.SetActive(true);
+            fadePanelGroup.gameObject.SetActive(true);
+            fadePanelGroup.alpha = 0f;
+            tween = fadePanelGroup.DOFade(1f, fadeInDur).SetUpdate(true);
         }
-        if (progressBar != null)
-        {
-            progressBar.value = 0f; // スライダーをリセット
+        else
+        {        // 1. ロード画面を表示する
+            if (loadingCanvasGroup != null)
+            {
+                loadingCanvasGroup.gameObject.SetActive(true);
+            }
+            if (progressBar != null)
+            {
+                progressBar.value = 0f; // スライダーをリセット
+            }
+            loadingCanvasGroup.alpha = 0f;
+            tween = loadingCanvasGroup.DOFade(1f, fadeInDur).SetUpdate(true);
         }
-
-        // 2. 非同期でシーンの読み込みを開始
-
-        loadingCanvasGroup.alpha = 0f;
-        tween = loadingCanvasGroup.DOFade(1f, fadeInDur).SetUpdate(true);
         yield return new WaitForSecondsRealtime(fadeInDur);
 
         loadingCanvasGroup.blocksRaycasts = true;
@@ -82,11 +102,14 @@ public class SceneLoader : MonoBehaviour
             // 0.9 = 読み込み完了、1.0 = シーン有効化（isDone）
 
             // 0.9で完了とみなすため、0.9で割って0.0〜1.0の範囲に変換する
-            float operationProg = Mathf.Clamp01(operation.progress / 0.9f);
-            float timeProg = time / minLoadDur;
-            if (progressBar != null)
+            if (!panel)
             {
-                progressBar.value = Mathf.Min(operationProg, timeProg); // スライダーに進捗を反映
+                float operationProg = Mathf.Clamp01(operation.progress / 0.9f);
+                float timeProg = time / minLoadDur;
+                if (progressBar != null)
+                {
+                    progressBar.value = Mathf.Min(operationProg, timeProg); // スライダーに進捗を反映
+                }
             }
 
             yield return null; // 1フレーム待つ
@@ -94,12 +117,27 @@ public class SceneLoader : MonoBehaviour
         loadingCanvasGroup.blocksRaycasts = false;
         Time.timeScale = 1f;
 
-        tween = loadingCanvasGroup.DOFade(0f, fadeOutDur).SetUpdate(true);
+        if (panel)
+        {
+            tween = fadePanelGroup.DOFade(0f, fadeOutDur).SetUpdate(true);
+        }
+        else
+        {
+            tween = loadingCanvasGroup.DOFade(0f, fadeOutDur).SetUpdate(true);
+        }
         yield return new WaitForSecondsRealtime(fadeOutDur);
 
-        if (loadingCanvasGroup != null)
+
+        if (panel)
         {
-            loadingCanvasGroup.gameObject.SetActive(false);
+            fadePanelGroup.gameObject.SetActive(false);
+        }
+        else
+        {
+            if (loadingCanvasGroup != null)
+            {
+                loadingCanvasGroup.gameObject.SetActive(false);
+            }
         }
 
         tween.Kill(true);

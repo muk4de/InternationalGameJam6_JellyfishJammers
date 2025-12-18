@@ -1,114 +1,66 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class MoonPoolManager : MonoBehaviour
 {
-    public enum Choice
-    {
-        None,
-        Right,
-        Left
-    }
-
     public bool EventTrigger = false;
     public UnityEvent StartEvent;
 
-    [SerializeField] DialogueController jellyfishDialogue;
-    [SerializeField] CanvasGroup choiceButtonGroup;
-    [SerializeField] CanvasGroup fadePanelGroup;
-    [SerializeField] Image BackgroundImage;
+    [SerializeField] List<string> narrationSentences;
 
-    public Choice CurrentChoice = Choice.None;
-    public List<Choice> CorrectAnswers = new List<Choice>();
-    public List<Sprite> BackgroundSprites = new List<Sprite>();
+    [SerializeField] PlayerController playerController;
+    [SerializeField] DialogueController jellyfishDialogue;
+    [SerializeField] SoundData endingBgm;
+    [SerializeField] CanvasGroup endingPanelGroup;
+    [SerializeField] TextMeshProUGUI endingText;
 
     Tween tween;
 
     private void Start()
     {
-        BackgroundImage.sprite = BackgroundSprites[0];
-        choiceButtonGroup.gameObject.SetActive(false);
-        choiceButtonGroup.interactable = false;
-        choiceButtonGroup.alpha = 0f;
+        StartCoroutine(MoonPoolCoroutine());
+        endingPanelGroup.gameObject.SetActive(false);
+        endingPanelGroup.alpha = 0f;
 
-        fadePanelGroup.gameObject.SetActive(false);
-        fadePanelGroup.alpha = 0f;
-
-        StartCoroutine(StartAlleyChoice());
-
+        endingText.gameObject.SetActive(false);
+        endingText.alpha = 0f;
     }
 
-    IEnumerator StartAlleyChoice()
+    IEnumerator MoonPoolCoroutine()
     {
-        yield return new WaitForSeconds(1f);
+        playerController.CanMove = false;
+        AudioManager.I.PlayBgm(endingBgm, 2f);
+        yield return new WaitForSeconds(1);
 
-        bool clearFlg = true;
+        var coroutine = jellyfishDialogue.GetStartDialogue();
 
-        for(int i = 0; i < CorrectAnswers.Count; i++)
-        {
-            CurrentChoice = Choice.None ;
-            if(i != 0)
-            {
-                BackgroundImage.sprite = BackgroundSprites[i];
+        yield return coroutine;
 
-                tween = fadePanelGroup.DOFade(0f, 1f);
+        playerController.CanMove = true;
+        endingPanelGroup.gameObject.SetActive(true);
+        tween = endingPanelGroup.DOFade(1f, 5f).SetEase(Ease.Linear);
 
-                yield return tween.WaitForCompletion();
+        yield return tween.WaitForCompletion();
+        playerController.CanMove = false;
 
-                fadePanelGroup.gameObject.SetActive(false);
-            }
+        coroutine = StartCoroutine(NarrationManager.Instance.StartNarration(narrationSentences));
 
-            jellyfishDialogue.sentenceIndex = i;
-            var coroutine = jellyfishDialogue.GetStartDialogue();
-
-            yield return coroutine;
-
-            choiceButtonGroup.gameObject.SetActive(true);
-            tween = choiceButtonGroup.DOFade(1f, 1f);
-
-            yield return tween.WaitForCompletion();
-            choiceButtonGroup.interactable = true;
-
-            yield return new WaitWhile(() => CurrentChoice == Choice.None);
-
-            choiceButtonGroup.interactable = false;
-            tween = choiceButtonGroup.DOFade(0f, 1f);
-
-            yield return tween.WaitForCompletion();
-            choiceButtonGroup.gameObject.SetActive(false);
-
-            if (CurrentChoice == Choice.Right)
-            {
-                jellyfishDialogue.sentenceIndex = 3;
-            }
-            else
-            {
-                jellyfishDialogue.sentenceIndex = 4;
-            }
-
-            coroutine = jellyfishDialogue.GetStartDialogue();
-
-            yield return coroutine;
-
-            fadePanelGroup.gameObject.SetActive(true);
-            tween = fadePanelGroup.DOFade(1f, 1f);
-
-            yield return tween.WaitForCompletion();
-            yield return new WaitForSeconds(0.5f);
-
-            if(CurrentChoice != CorrectAnswers[i])
-            {
-                clearFlg = false;
-            }
-        }
+        yield return coroutine;
 
 
-        Debug.Log($"clearFlg = {clearFlg}");
+
+        endingText.gameObject.SetActive(true);
+        tween = endingText.DOFade(1f, 10f).SetEase(Ease.Linear);
+
+        yield return tween.WaitForCompletion();
+
+        yield return new WaitUntil(() => Input.anyKey);
+
+        SceneLoader.I.FadeScene(SceneLoader.TitleSceneName, 5f, 1f, 5f, Color.black);
     }
 
     public void TriggerEvent()
@@ -116,13 +68,11 @@ public class MoonPoolManager : MonoBehaviour
         EventTrigger = true;
     }
 
-    public void ChoiceRight()
+    private void OnDestroy()
     {
-        CurrentChoice = Choice.Right;
-    }
-
-    public void ChoiceLeft()
-    {
-        CurrentChoice = Choice.Left;
+        if (tween.IsActive())
+        {
+            tween.Kill(true);
+        }
     }
 }

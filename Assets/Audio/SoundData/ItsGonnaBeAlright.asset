@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50300b73a64ba914e9cacbf83af4b34e, type: 3}
-  m_Name: UnderwaterEnv
+  m_Name: ItsGonnaBeAlright
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: c2dfd883b89578b4f8c51f4391949bb3, type: 3}
+  clip: {fileID: 8300000, guid: 3538e805f95fc62408c7365984e033a2, type: 3}
   outputGroup: {fileID: 4759022790173958588, guid: 4c26f923ded1101468d13c4c2ac49b85, type: 2}
-  volume: 1
+  volume: 0.4
   pitch: 1
   loop: 1
   spatialBlend: 0

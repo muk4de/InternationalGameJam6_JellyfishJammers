@@ -69,9 +69,9 @@ public class GameManager : MonoBehaviour
         EventTrigger = true;
     }
 
-    public void GoMoonPoolScene()
+    public void GoAlleyWaysScene()
     {
         SetPlayerMovable(false);
-        SceneLoader.I.LoadScene(SceneLoader.MoonPoolSceneName, 1f, 2f, 1f);
+        SceneLoader.I.FadeScene(SceneLoader.AlleyWaysSceneName, 1f, 2f, 1f);
     }
 }

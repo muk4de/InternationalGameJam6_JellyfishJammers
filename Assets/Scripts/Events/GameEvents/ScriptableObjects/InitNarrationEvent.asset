@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sentences:
   - You are a marine biologist, and want to study marine life after Tokyo has sunk.
-  - You heard rumors of marine life somehow becoming robotic, eels made of wires,
-    fish made with scraps of drones, sharks made from metal scraps of buildings.
+  - You heard rumors of marine life somehow becoming robotic.
+  - eels made of wires, fish made with scraps of drones, sharks made from metal scraps
+    of buildings.
   - So you dive down to find out for yourself.
   ShowInstant: 1
-  FreezeTimeScale: 1

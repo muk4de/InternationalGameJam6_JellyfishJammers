@@ -10,6 +10,8 @@ public class JellyfishController : MonoBehaviour
 
 
     //public
+    public Transform VisualCue;
+    public Vector2 VisualCueOffset;
     public Transform Player;
     public bool IsFollow;
 
@@ -33,7 +35,7 @@ public class JellyfishController : MonoBehaviour
 
     void Update()
     {
-
+        if(VisualCue != null) VisualCue.position = transform.position + (Vector3)VisualCueOffset;
         if (!IsFollow) return;
         swimTimer += Time.deltaTime;
         if (swimTimer > swimInterval)
