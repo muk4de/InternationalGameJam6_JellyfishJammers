@@ -17,7 +17,9 @@ MonoBehaviour:
   - speaker: 0
     text: So why are you here in the first place?
   - speaker: 1
-    text: "To explore the sunken city, \nwhile learning about the cyber marine animals"
+    text: 'To explore the sunken city, '
+  - speaker: 1
+    text: while learning about the cyber marine animals
   - speaker: 0
     text: Oh! That is exactly where my family went!
   - speaker: 0

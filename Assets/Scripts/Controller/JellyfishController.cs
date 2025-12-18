@@ -8,8 +8,6 @@ public class JellyfishController : MonoBehaviour
     [SerializeField] float swimInterval = 1f;
     [SerializeField] float swimPower = 1f;
 
-    [SerializeField] Transform canvas;
-    [SerializeField] Vector2 offset;
 
     //public
     public Transform Player;
@@ -35,7 +33,6 @@ public class JellyfishController : MonoBehaviour
 
     void Update()
     {
-        if(canvas != null) canvas.position = (Vector2)transform.position + offset;
 
         if (!IsFollow) return;
         swimTimer += Time.deltaTime;
@@ -91,9 +88,4 @@ public class JellyfishController : MonoBehaviour
         }
     }
 
-    private void OnValidate()
-    {
-        if (canvas == null) return;
-        canvas.position = (Vector2)transform.position + offset;
-    }
 }

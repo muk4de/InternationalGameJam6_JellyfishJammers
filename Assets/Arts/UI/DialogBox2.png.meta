@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 5d986ff2862cb5f4ab6db4fd81c4bbbb
+guid: 408e613fd2b9d8745863d8df43eb9c07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8494933396513036309
-    second: Jellyfish_Stand_0
-  - first:
-      213: 5366799545623021116
-    second: Jellyfish_Stand_1
-  - first:
-      213: -218365806188732680
-    second: Jellyfish_Stand_2
-  - first:
-      213: 9153135420137833971
-    second: Jellyfish_Stand_3
+      213: 8637030672905314504
+    second: DialogBox2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jellyfish_Stand_1
+      name: DialogBox2_0
       rect:
         serializedVersion: 2
-        x: 503
-        y: 180
-        width: 1102
-        height: 1260
+        x: 0
+        y: 0
+        width: 456
+        height: 168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 375, y: 0, z: 37, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c36869190c3ba7a40800000000000000
-      internalID: 5366799545623021116
+      spriteID: 8c0aca4d2a5ecd770800000000000000
+      internalID: 8637030672905314504
       vertices: []
       indices: 
       edges: []
@@ -147,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 87637739a97451f49b6d2fc2335b3f54
+    spriteID: cfd2dd477dc93cd43a7c377e30e0cec5
     internalID: 0
     vertices: []
     indices: 
@@ -157,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jellyfish_Stand_0: -8494933396513036309
-      Jellyfish_Stand_1: 5366799545623021116
-      Jellyfish_Stand_2: -218365806188732680
-      Jellyfish_Stand_3: 9153135420137833971
+      DialogBox2_0: 8637030672905314504
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

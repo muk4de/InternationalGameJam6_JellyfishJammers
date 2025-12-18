@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 5d986ff2862cb5f4ab6db4fd81c4bbbb
+guid: f3896f838e0f01c4b9ffa02dcdf9846a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8494933396513036309
-    second: Jellyfish_Stand_0
-  - first:
-      213: 5366799545623021116
-    second: Jellyfish_Stand_1
-  - first:
-      213: -218365806188732680
-    second: Jellyfish_Stand_2
-  - first:
-      213: 9153135420137833971
-    second: Jellyfish_Stand_3
+      213: 3685662670170446452
+    second: PlayerDialogue_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jellyfish_Stand_1
+      name: PlayerDialogue_0
       rect:
         serializedVersion: 2
-        x: 503
-        y: 180
-        width: 1102
-        height: 1260
+        x: 148
+        y: 4
+        width: 1903
+        height: 726
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1527, y: 0, z: 153, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c36869190c3ba7a40800000000000000
-      internalID: 5366799545623021116
+      spriteID: 47a5d69cbaa162330800000000000000
+      internalID: 3685662670170446452
       vertices: []
       indices: 
       edges: []
@@ -147,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 87637739a97451f49b6d2fc2335b3f54
+    spriteID: 941000785b1079b4ba1adf3ee5e992e5
     internalID: 0
     vertices: []
     indices: 
@@ -157,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jellyfish_Stand_0: -8494933396513036309
-      Jellyfish_Stand_1: 5366799545623021116
-      Jellyfish_Stand_2: -218365806188732680
-      Jellyfish_Stand_3: 9153135420137833971
+      PlayerDialogue_0: 3685662670170446452
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

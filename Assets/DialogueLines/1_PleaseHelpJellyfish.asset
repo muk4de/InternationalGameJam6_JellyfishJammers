@@ -9,16 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 1_PleaseHelpJellyfish 1
+  m_Script: {fileID: 11500000, guid: e0574483ac09ffe4eb0edf2e7cd3833f, type: 3}
+  m_Name: 1_PleaseHelpJellyfish
   m_EditorClassIdentifier: Assembly-CSharp::DialogueLines
   title: PleaseHelpJellyfish
   list:
   - speaker: 0
-    text: A human!? Please, look down here!
+    text: A human!?
   - speaker: 0
-    text: look down here! its an emergency!
+    text: 'Please, look down here!
+
+      It''s an emergency!'
   - speaker: 0
-    text: My sister is stuck under this heavy thing\nand she cant get out!
+    text: 'My sister is stuck under this heavy thing
+
+      and she can''t get out!'
   - speaker: 0
-    text: please, just do something!\nanythig!
+    text: 'Please, just do something!
+
+      anything!'

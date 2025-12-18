@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e0574483ac09ffe4eb0edf2e7cd3833f, type: 3}
   m_Name: 2_ThankYouHelping
   m_EditorClassIdentifier: Assembly-CSharp::DialogueLines
   title: ThankYouHelping
@@ -23,10 +23,14 @@ MonoBehaviour:
   - speaker: 0
     text: We are CyberJellies.
   - speaker: 0
-    text: But you guys know us as Jellyfish.
+    text: But humans know us as Jellyfish.
   - speaker: 0
-    text: And one more thing,\nwill you help me find our family?
+    text: 'And one more thing,
+
+      will you help me find our family?'
   - speaker: 0
-    text: They went to the moon pool...\nbut we got stuck and now I'm lost.
+    text: 'They went to the moon pool...
+
+      but we got stuck and now I''m lost.'
   - speaker: 1
     text: Sure.

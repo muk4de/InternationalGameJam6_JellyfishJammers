@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 5d986ff2862cb5f4ab6db4fd81c4bbbb
+guid: a5ba8994f5377664593db212ab287bdc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8494933396513036309
-    second: Jellyfish_Stand_0
+      213: 37985380073144091
+    second: Eel_Stand_0
   - first:
-      213: 5366799545623021116
-    second: Jellyfish_Stand_1
-  - first:
-      213: -218365806188732680
-    second: Jellyfish_Stand_2
-  - first:
-      213: 9153135420137833971
-    second: Jellyfish_Stand_3
+      213: -5892273792223070225
+    second: Eel_Stand_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jellyfish_Stand_1
+      name: Eel_Stand_1
       rect:
         serializedVersion: 2
-        x: 503
-        y: 180
-        width: 1102
-        height: 1260
+        x: 556
+        y: 37
+        width: 1220
+        height: 1375
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c36869190c3ba7a40800000000000000
-      internalID: 5366799545623021116
+      spriteID: fe7333f54307a3ea0800000000000000
+      internalID: -5892273792223070225
       vertices: []
       indices: 
       edges: []
@@ -147,7 +141,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 87637739a97451f49b6d2fc2335b3f54
+    spriteID: 50633142975c6dd4fb1ae62b3be1f15b
     internalID: 0
     vertices: []
     indices: 
@@ -157,10 +151,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jellyfish_Stand_0: -8494933396513036309
-      Jellyfish_Stand_1: 5366799545623021116
-      Jellyfish_Stand_2: -218365806188732680
-      Jellyfish_Stand_3: 9153135420137833971
+      Eel_Stand_0: 37985380073144091
+      Eel_Stand_1: -5892273792223070225
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

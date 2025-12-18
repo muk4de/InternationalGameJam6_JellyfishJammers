@@ -56,7 +56,7 @@ public class DialogueController : MonoBehaviour
         skipAction.Disable();
     }
 
-    void Start()
+    void Awake()
     {
         InitializeWindow(myDialogueGroup);
         if (playerController != null)
@@ -93,7 +93,6 @@ public class DialogueController : MonoBehaviour
     {
         Invoke("StartDialogue", delay);
     }
-
     public void StartDialogue()
     {
         if (IsTalking) return;
@@ -101,6 +100,16 @@ public class DialogueController : MonoBehaviour
 
         if (currentDialogueCoroutine != null) StopCoroutine(currentDialogueCoroutine);
         currentDialogueCoroutine = StartCoroutine(DialogueRoutine(sentences[sentenceIndex]));
+    }
+
+    public Coroutine GetStartDialogue()
+    {
+        if (IsTalking) return null;
+        if (sentenceIndex < 0 || sentenceIndex >= sentences.Count) return null;
+
+        if (currentDialogueCoroutine != null) StopCoroutine(currentDialogueCoroutine);
+        currentDialogueCoroutine = StartCoroutine(DialogueRoutine(sentences[sentenceIndex]));
+        return currentDialogueCoroutine;
     }
 
 

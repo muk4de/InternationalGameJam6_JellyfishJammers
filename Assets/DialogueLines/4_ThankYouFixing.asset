@@ -20,3 +20,19 @@ MonoBehaviour:
     text: 'Now I can swim freely again.
 
       Thank you.'
+  - speaker: 0
+    text: I want to return the favor.
+  - speaker: 0
+    text: 'If there is anything you are looking for
+
+      please let me know.'
+  - speaker: 1
+    text: We are heading to the Moon Pool.
+  - speaker: 0
+    text: The Moon Pool... Yes, I know it.
+  - speaker: 0
+    text: It is just ahead. But the path is tricky.
+  - speaker: 0
+    text: Look for the old streetlight.
+  - speaker: 0
+    text: You should find a clue there that will guide you. Good luck.
