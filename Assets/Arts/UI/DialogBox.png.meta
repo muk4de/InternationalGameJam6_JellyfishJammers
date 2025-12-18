@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 65cc50a884e06a34d93cc4bb5d39c9ea
+guid: 88fca3e6ca1f91d4ca2091cfbe440495
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -560468520843257615
-    second: Idle Eel_0
-  - first:
-      213: 8835203485007163414
-    second: Idle Eel_1
-  - first:
-      213: 940999019998232295
-    second: Idle Eel_2
-  - first:
-      213: 3831558917763506816
-    second: Idle Eel_3
+      213: -7212743939725961781
+    second: DialogBox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle Eel_0
+      name: DialogBox_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 456
+        height: 168
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f8595b89d0d838f0800000000000000
-      internalID: -560468520843257615
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle Eel_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 610352a32c2fc9a70800000000000000
-      internalID: 8835203485007163414
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle Eel_2
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7ee3cf08f991f0d00800000000000000
-      internalID: 940999019998232295
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle Eel_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0822645098e6c2530800000000000000
-      internalID: 3831558917763506816
+      spriteID: bc558c00a9f27eb90800000000000000
+      internalID: -7212743939725961781
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3ae9a7ffe4a94494d9b88a4822de91c0
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Idle Eel_0: -560468520843257615
-      Idle Eel_1: 8835203485007163414
-      Idle Eel_2: 940999019998232295
-      Idle Eel_3: 3831558917763506816
+      DialogBox_0: -7212743939725961781
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

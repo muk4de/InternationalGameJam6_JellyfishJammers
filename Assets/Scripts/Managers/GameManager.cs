@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -14,6 +15,9 @@ public class GameManager : MonoBehaviour
     public bool EventTrigger = false;
     [Header("Reference")]
     public DialogueController BlueJellyfishDialogue;
+
+    public List<GameObject> HelpJellyfishSceneObj = new();
+    public List<GameObject> EelSceneObj = new();
 
     private void Awake()
     {
@@ -38,6 +42,19 @@ public class GameManager : MonoBehaviour
     public void SetPlayerMovable(bool movable)
     {
         playerController.CanMove = movable;
+    }
+
+    public void DisActiveHelpJellyfishSceneObj()
+    {
+        DisActiveSceneObj(HelpJellyfishSceneObj);
+    }
+    public void DisActiveSceneObj(List<GameObject> objects)
+    {
+        foreach(var obj in objects)
+        {
+            if (obj == null) continue;
+            obj.SetActive(false);
+        }
     }
 
     public IEnumerator PlayTimeline(PlayableDirector director)

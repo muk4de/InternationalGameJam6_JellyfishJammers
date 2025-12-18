@@ -1,144 +1,219 @@
 ﻿using TMPro;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
+// リストのラッパークラス（修正版）
 [System.Serializable]
-public class StringListWrapper
+public class DialogueScenario
 {
-    public string title;
-    public List<string> list = new List<string>();
+    // stringのリストではなく、DialogueLineのリストに変更
+    public DialogueLines lines;
     public UnityEvent OnStartDialogue;
     public UnityEvent OnEndDialogue;
 }
+
 public class DialogueController : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] float popupDuration = 0.1f;
+    [SerializeField] float popupDuration = 0.2f;
     [SerializeField] float charInterval = 0.05f;
+    [SerializeField] bool stopPlayer = true;
+    [SerializeField] InputAction skipAction;
 
-    [Header("Reference")]
-    [SerializeField] CanvasGroup dialogueGroup;
-    [SerializeField] TextMeshProUGUI dialogueTmp;
+    [Header("Entity References (Self)")]
+    [SerializeField] CanvasGroup myDialogueGroup;
+    [SerializeField] TextMeshProUGUI myDialogueTmp;
+
+    [Header("Player Reference")]
+    // ここにシーン上のPlayerDialogueControllerをアタッチする
+    [SerializeField] PlayerDialogueController playerController;
 
     [Header("General Events")]
     [SerializeField] UnityEvent OnStartDialogue;
     [SerializeField] UnityEvent OnEndDialogue;
 
-    [SerializeField] List<StringListWrapper> sentences = new();
-    private Queue<string> sentenceQueue = new Queue<string>();
+    [SerializeField] List<DialogueScenario> sentences = new();
 
-    public bool IsTalking = false;
-    Vector3 dialogueGroupScale;
-    Sequence seq;
+    public bool IsTalking { get; private set; } = false;
+    public int sentenceIndex = 0;
+    private bool isInputReceived = false;
+    private Coroutine currentDialogueCoroutine;
 
-    public int nowSentenceIndex = 0;
+    // 現在アクティブなウィンドウ情報（切り替え用）
+    private CanvasGroup currentGroup;
+    private TextMeshProUGUI currentTmp;
+    private Vector3 currentInitialScale;
+
+    private void OnEnable()
+    {
+        skipAction.Enable();
+    }
+    private void OnDisable()
+    {
+        skipAction.Disable();
+    }
 
     void Start()
     {
-        if (dialogueGroup != null)
+        InitializeWindow(myDialogueGroup);
+        if (playerController != null)
         {
-            dialogueGroup.gameObject.SetActive(false);
-            dialogueGroupScale = dialogueGroup.transform.localScale;
-            dialogueGroup.transform.localScale = Vector3.zero;
+            InitializeWindow(playerController.dialogueGroup);
         }
     }
 
-    public void ExecuteDialogue()
-    {
-        CreateNewSequence();
-
-        if (IsTalking)
-        {
-            if (sentenceQueue.Count == 0)
-            {
-                OnEndDialogue.Invoke();
-                sentences[nowSentenceIndex].OnEndDialogue.Invoke();
-                HideDialogue(true);
-                return;
-            }
-            //HideDialogue(false);
-            //ShowDialogue();
-            DisplayNextSentence();
-        }
-        else
-        {
-            IsTalking = true;
-            OnStartDialogue.Invoke();
-            sentences[nowSentenceIndex].OnStartDialogue.Invoke();
-            sentenceQueue.Clear();
-            foreach (var sentence in sentences[nowSentenceIndex].list)
-            {
-                sentenceQueue.Enqueue(sentence);
-            }
-
-            ShowDialogue();
-            DisplayNextSentence();
-        }
-    }
-
-    public void ShowDialogue()
-    {
-        if (dialogueGroup != null)
-        {
-            seq.AppendCallback(() =>
-            {
-                dialogueTmp.text = "";
-            });
-            seq.AppendCallback(() => dialogueGroup.gameObject.SetActive(true));
-
-            seq.Append(dialogueGroup.DOFade(1f, popupDuration));
-            seq.Join(dialogueGroup.transform.DOScale(dialogueGroupScale, popupDuration));
-        }
-    }
-
-    public void HideDialogue(bool isFinished)
+    private void Update()
     {
         if (!IsTalking) return;
-        if (isFinished)
+        if (skipAction.WasPressedThisFrame())
         {
-            IsTalking = false;
-            CreateNewSequence();
-        }
-
-        if (dialogueGroup != null)
-        {
-            seq.Append(dialogueGroup.DOFade(0f, popupDuration));
-            seq.Join(dialogueGroup.transform.DOScale(0f, popupDuration));
-
-            seq.AppendCallback(() => dialogueGroup.gameObject.SetActive(false));
+            isInputReceived = true;
         }
     }
 
-    public void DisplayNextSentence()
+    private void InitializeWindow(CanvasGroup group)
     {
-        var text = sentenceQueue.Dequeue();
-        seq.AppendCallback(() =>
+        if (group != null)
         {
-            dialogueTmp.text = text;
-            dialogueTmp.maxVisibleCharacters = 0;
-        });
-
-        var charNum = text.Length;
-        var dur = text.Length * charInterval;
-        seq.Append(DOTween.To(() => 0, (x) => dialogueTmp.maxVisibleCharacters = x, charNum, dur).SetEase(Ease.Linear));
+            group.gameObject.SetActive(false);
+            group.alpha = 0f;
+            group.transform.localScale = Vector3.zero;
+        }
     }
 
-    void CreateNewSequence()
+    public void StartDialogue()
     {
-        if (seq != null && seq.IsActive())
+        if (IsTalking) return;
+        if (sentenceIndex < 0 || sentenceIndex >= sentences.Count) return;
+
+        if (currentDialogueCoroutine != null) StopCoroutine(currentDialogueCoroutine);
+        currentDialogueCoroutine = StartCoroutine(DialogueRoutine(sentences[sentenceIndex]));
+    }
+
+
+    private IEnumerator DialogueRoutine(DialogueScenario currentData)
+    {
+        IsTalking = true;
+        isInputReceived = false;
+
+        if (stopPlayer && GameManager.Instance != null) GameManager.Instance.SetPlayerMovable(false);
+
+        OnStartDialogue?.Invoke();
+        currentData.OnStartDialogue?.Invoke();
+
+        // 前回の話者タイプ（初期値はnull）
+        SpeakerType? lastSpeaker = null;
+
+        foreach (var line in currentData.lines.list)
         {
-            seq.Kill(true);
+            // --- 話者の切り替え判定 ---
+
+            // 話者が変わった場合、前のウィンドウを閉じる
+            if (lastSpeaker != null && lastSpeaker != line.speaker)
+            {
+                yield return HideWindowRoutine(currentGroup);
+            }
+
+            // 現在の操作対象UIをセット
+            if (line.speaker == SpeakerType.Player && playerController != null)
+            {
+                currentGroup = playerController.dialogueGroup;
+                currentTmp = playerController.dialogueTmp;
+            }
+            else // Entity (Self)
+            {
+                currentGroup = myDialogueGroup;
+                currentTmp = myDialogueTmp;
+            }
+
+            // 初回、または話者が変わった時だけウィンドウを開く
+            if (lastSpeaker != line.speaker)
+            {
+                // 元のスケールを取得（Vector3.zeroになってる可能性があるので工夫が必要）
+                // ※ここでは簡易的に1としていますが、Prefabの設定に合わせる場合は別途保存が必要
+                currentInitialScale = Vector3.one;
+                yield return ShowWindowRoutine(currentGroup, currentInitialScale);
+            }
+
+            lastSpeaker = line.speaker;
+
+            // --- 文字送り処理 (前回と同じロジック) ---
+
+            currentTmp.text = line.text;
+            currentTmp.maxVisibleCharacters = 0;
+
+            int totalChars = line.text.Length;
+            float duration = totalChars * charInterval;
+
+            Tween typeTween = DOTween.To(
+                () => currentTmp.maxVisibleCharacters,
+                x => currentTmp.maxVisibleCharacters = x,
+                totalChars,
+                duration
+            ).SetEase(Ease.Linear);
+
+            while (typeTween.IsActive() && typeTween.IsPlaying())
+            {
+                if (isInputReceived)
+                {
+                    typeTween.Complete();
+                    isInputReceived = false;
+                    break;
+                }
+                yield return null;
+            }
+
+            yield return new WaitUntil(() => isInputReceived);
+            isInputReceived = false;
         }
-        seq = DOTween.Sequence();
+
+        // 最後のアクティブなウィンドウを閉じる
+        yield return HideWindowRoutine(currentGroup);
+
+        currentData.OnEndDialogue?.Invoke();
+        OnEndDialogue?.Invoke();
+
+        if (stopPlayer && GameManager.Instance != null) GameManager.Instance.SetPlayerMovable(true);
+
+        IsTalking = false;
+        currentDialogueCoroutine = null;
+    }
+
+    private IEnumerator ShowWindowRoutine(CanvasGroup group, Vector3 targetScale)
+    {
+        if (group == null) yield break;
+
+        group.gameObject.SetActive(true);
+        // テキストはクリアしておく
+        if (currentTmp != null) currentTmp.text = "";
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(group.DOFade(1f, popupDuration));
+        seq.Join(group.transform.DOScale(targetScale, popupDuration));
+
+        yield return seq.WaitForCompletion();
+    }
+
+    private IEnumerator HideWindowRoutine(CanvasGroup group)
+    {
+        if (group == null || !group.gameObject.activeSelf) yield break;
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(group.DOFade(0f, popupDuration));
+        seq.Join(group.transform.DOScale(0f, popupDuration));
+
+        yield return seq.WaitForCompletion();
+
+        group.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        if (seq != null && seq.IsActive())
-        {
-            seq.Kill(true);
-        }
+        myDialogueGroup?.DOKill();
+        if (playerController != null && playerController.dialogueGroup != null)
+            playerController.dialogueGroup.DOKill();
     }
 }

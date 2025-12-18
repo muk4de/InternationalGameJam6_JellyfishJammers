@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -18,9 +18,9 @@ public class HelpJellyfishEvent : GameEventBase
         yield return new WaitForSeconds(1f);
 
         var ienumerator = gm.PlayTimeline(gm.HelpJellyfish);
+        gm.BlueJellyfishDialogue.sentenceIndex = 1;
         yield return ienumerator;
 
-        gm.BlueJellyfishDialogue.nowSentenceIndex = 1;
 
         yield return null;
     }

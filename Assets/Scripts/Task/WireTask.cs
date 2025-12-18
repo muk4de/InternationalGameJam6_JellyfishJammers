@@ -65,7 +65,10 @@ public class WireTask : MonoBehaviour
         if (!IsOpening) return;
         IsOpening = false;
         GameManager.Instance.SetPlayerMovable(true);
-
+        foreach(var wire in leftWires)
+        {
+            wire.isConnected = false;
+        }
         SequenceSetup(Ease.OutCubic);
         HideTaskPanel(sequence);
     }

@@ -25,6 +25,11 @@ public class JellyfishController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void SetFollowPlayer(bool follow)
+    {
+        IsFollow = follow;
+    }
+
     void Update()
     {
         if (!IsFollow) return;

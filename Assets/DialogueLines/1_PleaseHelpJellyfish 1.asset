@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 1_PleaseHelpJellyfish 1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueLines
+  title: PleaseHelpJellyfish
+  list:
+  - speaker: 0
+    text: A human!? Please, look down here!
+  - speaker: 0
+    text: look down here! its an emergency!
+  - speaker: 0
+    text: My sister is stuck under this heavy thing\nand she cant get out!
+  - speaker: 0
+    text: please, just do something!\nanythig!

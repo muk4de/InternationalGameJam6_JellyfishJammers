@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [Header("Input system")]
     [SerializeField] InputAction moveAction;
 
+    [SerializeField] Transform dialogue;
+    [SerializeField] Vector2 dialogueOffset = new Vector2();
     // public 
     public bool CanMove = true;
 
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveInput = moveAction.ReadValue<Vector2>();
-
+        dialogue.transform.position = transform.position + (Vector3)dialogueOffset;
     }
 
     void FixedUpdate()
