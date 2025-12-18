@@ -4927,6 +4927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2681677013364482096}
   - component: {fileID: 8514264129623622223}
+  - component: {fileID: 8551155745883202740}
   - component: {fileID: 3900503401871958744}
   - component: {fileID: 8010147234738386600}
   - component: {fileID: 8012771583032719519}
@@ -4966,7 +4967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbbe9789b43b024dbe8fa75b3b1cb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 7
   accelerationTime: 0.2
   decelerationTime: 0.2
   moveAction:
@@ -5058,7 +5059,23 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  dialogue: {fileID: 0}
+  dialogueOffset: {x: 0, y: 2.5}
   CanMove: 1
+--- !u!114 &8551155745883202740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428331712381609840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f92acfc995ad242b26b02ac810ce26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueGroup: {fileID: 0}
+  dialogueTmp: {fileID: 0}
 --- !u!212 &3900503401871958744
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5103,7 +5120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6622216301044242507, guid: 0a63991d801ee2b40afcb8d1e9972493, type: 3}
+  m_Sprite: {fileID: 9141040994389439041, guid: fd294c720ddeab24b9c9207fed569400, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5151,15 +5168,15 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.5, y: -0.9}
-  - {x: -0.4, y: -1}
-  - {x: 0.4, y: -1}
-  - {x: 0.5, y: -0.9}
-  - {x: 0.5, y: 0.9}
-  - {x: 0.4, y: 1}
-  - {x: -0.4, y: 1}
-  - {x: -0.5, y: 0.9}
-  - {x: -0.5, y: -0.9}
+  - {x: -0.5, y: -1.4}
+  - {x: -0.4, y: -1.5}
+  - {x: 0.4, y: -1.5}
+  - {x: 0.5, y: -1.4}
+  - {x: 0.5, y: 1.4}
+  - {x: 0.4, y: 1.5}
+  - {x: -0.4, y: 1.5}
+  - {x: -0.5, y: 1.4}
+  - {x: -0.5, y: -1.4}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

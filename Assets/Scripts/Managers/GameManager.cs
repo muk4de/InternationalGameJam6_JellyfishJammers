@@ -68,4 +68,10 @@ public class GameManager : MonoBehaviour
     {
         EventTrigger = true;
     }
+
+    public void GoMoonPoolScene()
+    {
+        SetPlayerMovable(false);
+        SceneLoader.I.LoadScene(SceneLoader.MoonPoolSceneName, 1f, 2f, 1f);
+    }
 }

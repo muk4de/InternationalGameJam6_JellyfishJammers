@@ -50,4 +50,12 @@ public class MemoController : MonoBehaviour
             memoRect.gameObject.SetActive(false);
         });
     }
+
+    private void OnDestroy()
+    {
+        if (tween != null && tween.IsActive())
+        {
+            tween.Kill(true);
+        }
+    }
 }

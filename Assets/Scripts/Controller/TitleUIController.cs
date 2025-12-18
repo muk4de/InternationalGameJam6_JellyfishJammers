@@ -141,7 +141,7 @@ public class TitleUIController : MonoBehaviour
         SequenceSetup(Ease.InCubic);
 
         HideTitleButtons();
-        sequence.AppendCallback(() => SceneLoader.I.LoadScene(SceneLoader.GameSceneName, fadeInDur, minLoadDur, fadeOutDur));
+        sequence.AppendCallback(() => SceneLoader.I.LoadScene(SceneLoader.CitySceneName, fadeInDur, minLoadDur, fadeOutDur));
     }
 
     private void SequenceSetup(Ease ease)

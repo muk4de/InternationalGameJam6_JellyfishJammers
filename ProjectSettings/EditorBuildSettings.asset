@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: 29537b59d1b966d408f217f0ae605cae
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Scenes/CityScene.unity
     guid: da91ba57e3aac004da70821b3ead257c
+  - enabled: 1
+    path: Assets/Scenes/MoonPoolScene.unity
+    guid: de1b7c944bfee364685883eddd7cd9dc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

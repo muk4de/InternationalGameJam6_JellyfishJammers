@@ -200,18 +200,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8669475408046174581}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: HideDialogue
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -229,7 +217,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 8669475408046174581}
         m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: ExecuteDialogue
+        m_MethodName: StartDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -253,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popupDuration: 0.2
-  charInterval: 0.025
+  charInterval: 0.05
   stopPlayer: 1
   skipAction:
     m_Name: Skip
@@ -264,7 +252,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: d6e8b96d-e439-4598-bb5b-6cbe6d639a4e
+      m_Id: 887d2511-0533-4be9-bf27-b60f595d2e78
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
@@ -272,7 +260,7 @@ MonoBehaviour:
       m_Action: Skip
       m_Flags: 0
     - m_Name: 
-      m_Id: 7e23fe96-c65c-4ec1-906a-68ae099fb90b
+      m_Id: ee219bc0-8de0-4772-81d1-816bc91d1ab6
       m_Path: <Keyboard>/t
       m_Interactions: 
       m_Processors: 
@@ -280,7 +268,7 @@ MonoBehaviour:
       m_Action: Skip
       m_Flags: 0
     - m_Name: 
-      m_Id: d91ac944-546b-4336-842c-cef2a0601dec
+      m_Id: 40bb9268-24c1-45c1-9b69-cb602a05bc9d
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -288,52 +276,18 @@ MonoBehaviour:
       m_Action: Skip
       m_Flags: 0
     m_Flags: 0
-  myDialogueGroup: {fileID: 0}
-  myDialogueTmp: {fileID: 0}
+  myDialogueGroup: {fileID: 7573296218817560587}
+  myDialogueTmp: {fileID: 7216272920476938369}
   playerController: {fileID: 0}
   OnStartDialogue:
     m_PersistentCalls:
       m_Calls: []
   OnEndDialogue:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2985771128225388557}
-        m_TargetAssemblyTypeName: InteractionEvent, Assembly-CSharp
-        m_MethodName: ShowVisualCue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   sentences:
-  - lines: {fileID: 0}
+  - lines: {fileID: 11400000, guid: 4cf3f562efbb06d40a995979daf130db, type: 2}
     OnStartDialogue:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: InteractionEvent, Assembly-CSharp
-          m_MethodName: EnableInteraction
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnEndDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-  - lines: {fileID: 0}
-    OnStartDialogue:
-      m_PersistentCalls:
-        m_Calls: []
-    OnEndDialogue:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2985771128225388557}
@@ -348,6 +302,95 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    OnEndDialogue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: InteractionEvent, Assembly-CSharp
+          m_MethodName: EnableInteraction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - lines: {fileID: 11400000, guid: 1d3e357d7e0b5354b91645592d41c4a5, type: 2}
+    OnStartDialogue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2985771128225388557}
+          m_TargetAssemblyTypeName: InteractionEvent, Assembly-CSharp
+          m_MethodName: DisableInteraction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnEndDialogue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: JellyfishController, Assembly-CSharp
+          m_MethodName: SetFollowPlayer
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: JellyfishController, Assembly-CSharp
+          m_MethodName: SetFollowPlayer
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: DisActiveHelpJellyfishSceneObj
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - lines: {fileID: 11400000, guid: 69ade6fb61af486489a2e750a3541b9e, type: 2}
+    OnStartDialogue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2985771128225388557}
+          m_TargetAssemblyTypeName: InteractionEvent, Assembly-CSharp
+          m_MethodName: DisableInteraction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnEndDialogue:
+      m_PersistentCalls:
+        m_Calls: []
   sentenceIndex: 0
 --- !u!58 &3139733433938844195
 CircleCollider2D:
@@ -624,5 +667,21 @@ PrefabInstance:
 --- !u!224 &2729893972840773621 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4667954306294741127, guid: 23f56a8db28035841abe2c25f8c35648, type: 3}
+  m_PrefabInstance: {fileID: 7288354371053850482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7216272920476938369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 72117327245148147, guid: 23f56a8db28035841abe2c25f8c35648, type: 3}
+  m_PrefabInstance: {fileID: 7288354371053850482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &7573296218817560587 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 881772481134366585, guid: 23f56a8db28035841abe2c25f8c35648, type: 3}
   m_PrefabInstance: {fileID: 7288354371053850482}
   m_PrefabAsset: {fileID: 0}

@@ -13,7 +13,8 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private Slider progressBar;
 
     public static readonly string TitleSceneName = "TitleScene";
-    public static readonly string GameSceneName = "GameScene";
+    public static readonly string CitySceneName = "CityScene";
+    public static readonly string MoonPoolSceneName = "MoonPoolScene";
 
     Tween tween;
 
